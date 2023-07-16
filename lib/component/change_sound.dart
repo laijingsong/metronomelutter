@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Future<int> changeSound(context) async {
+Future<int?> changeSound(context) async {
   buildOpt(String name, val) {
     return SimpleDialogOption(
       onPressed: () {
@@ -14,7 +14,7 @@ Future<int> changeSound(context) async {
     );
   }
 
-  int i = await showDialog<int>(
+  int? i = await showDialog<int>(
       context: context,
       builder: (BuildContext context) {
         return SimpleDialog(

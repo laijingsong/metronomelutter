@@ -18,15 +18,15 @@ class SyStepper extends StatelessWidget {
   final Function manualControl;
 
   const SyStepper({
-    Key key,
+    required Key key,
     this.value = 1,
-    this.onChange,
+    required this.onChange,
     this.min = 1,
     this.max = 9999999,
     this.step = 1,
     this.iconSize = 24.0,
     this.textSize = 24.0,
-    this.manualControl,
+    required this.manualControl,
   }) : super(key: key);
 
   @override
@@ -34,8 +34,8 @@ class SyStepper extends StatelessWidget {
     int value = this.value;
     ThemeData theme = Theme.of(context);
     final iconPadding = const EdgeInsets.all(4.0);
-    bool minusBtnDisabled = value <= this.min || value - this.step < this.min || this.onChange == null;
-    bool addBtnDisabled = value >= this.max || value + this.step > this.max || this.onChange == null;
+    bool minusBtnDisabled = value <= this.min || value - this.step < this.min;
+    bool addBtnDisabled = value >= this.max || value + this.step > this.max;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -45,7 +45,7 @@ class SyStepper extends StatelessWidget {
             child: Icon(
               Icons.remove,
               size: this.iconSize,
-              color: minusBtnDisabled ? theme.disabledColor : theme.textTheme.button.color,
+              color: minusBtnDisabled ? theme.disabledColor : theme.textTheme.labelLarge?.color,
             ),
           ),
           onTap: minusBtnDisabled
@@ -83,7 +83,7 @@ class SyStepper extends StatelessWidget {
             child: Icon(
               Icons.add,
               size: this.iconSize,
-              color: addBtnDisabled ? theme.disabledColor : theme.textTheme.button.color,
+              color: addBtnDisabled ? theme.disabledColor : theme.textTheme.labelLarge?.color,
             ),
           ),
           onTap: addBtnDisabled

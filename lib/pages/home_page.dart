@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -20,7 +19,7 @@ import '../component/slider.dart';
 import '../component/stepper.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({required Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -31,8 +30,8 @@ class _MyHomePageState extends State<MyHomePage>
   int _nowStep = -1;
   int count = 0;
   bool _isRunning = false;
-  Timer timer;
-  AnimationController _animationController;
+  late Timer timer;
+  late AnimationController _animationController;
 
   // ios 用,防止内存泄漏 todo iOS 也要三个播放器
   GameAudio myAudio = GameAudio(1);
@@ -119,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage>
                       max: Config.BEAT_MAX,
                       onChange: (b) {
                         appStore.setBeat(b);
-                      },
+                      }, key: null, manualControl: null,
                     ),
                     Divider(
                         // color: Color(0xffcccccc),
@@ -139,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage>
                         }
                       },
                       // 无用,为了能正常显示 不可用状态
-                      onChange: (i) {},
+                      onChange: (i) {}, key: null,
                     ),
                   ],
                 ),
@@ -227,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage>
                   children: [
                     IconButton(
                       icon: Icon(Icons.settings),
-                      color: Theme.of(context).textTheme.headline3.color,
+                      color: Theme.of(context).textTheme.displaySmall?.color,
                       onPressed: () async {
                         final result = await Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Setting()));
@@ -241,7 +240,7 @@ class _MyHomePageState extends State<MyHomePage>
             //   style: Theme.of(context).textTheme.headline3,
             // ),
 
-            SliderRow(appStore.bpm, _setBpmHanlder),
+            SliderRow(appStore.bpm, _setBpmHanlder, key: null,),
 
             // 小点
             IndactorRow(_nowStep, appStore.beat),

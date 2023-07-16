@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:metronomelutter/config/config.dart';
@@ -9,7 +8,7 @@ class SliderRow extends StatelessWidget {
   final int bpm;
   final Function setBpmHandler;
 
-  SliderRow(this.bpm, this.setBpmHandler, {Key key}) : super(key: key);
+  SliderRow(this.bpm, this.setBpmHandler, {required Key key}) : super(key: key);
 
   final textController = new TextEditingController();
 
@@ -75,7 +74,7 @@ class SliderRow extends StatelessWidget {
                   modifier: (percentage) => percentage.toInt().toString(),
                   bottomLabelText: 'BPM',
                   mainLabelStyle: TextStyle(
-                    color: Theme.of(context).textTheme.headline6.color,
+                    color: Theme.of(context).textTheme.titleLarge?.color,
                     fontSize: 52,
                   ),
                 ),

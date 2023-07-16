@@ -10,8 +10,8 @@ import 'package:url_launcher/url_launcher.dart';
 // 警告框
 void $warn(
   String text, {
-  gravity: ToastGravity.CENTER,
-  toastLength: Toast.LENGTH_SHORT,
+  gravity = ToastGravity.CENTER,
+  toastLength = Toast.LENGTH_SHORT,
 }) {
   Fluttertoast.cancel();
 
@@ -30,12 +30,12 @@ void $warn(
 Future<void> $confirm(
   String text,
   BuildContext context, {
-  final Function btnOkOnPress,
-  final Function btnCancelOnPress,
+  required final Function btnOkOnPress,
+  required final Function btnCancelOnPress,
   title = '提示',
   confirmText = '确定',
   cancelText = '取消',
-  Widget customBody,
+  required Widget customBody,
 }) async {
   return showDialog<void>(
     context: context,
@@ -86,17 +86,17 @@ Future<void> $confirm(
 // 复制到剪切板
 Future<String> copyToClipboard(
   String text, {
-  gravity: ToastGravity.CENTER,
+  gravity = ToastGravity.CENTER,
 }) async {
   //复制
   Clipboard.setData(ClipboardData(text: text));
 
-  var res = '';
+  String? res = '';
   try {
     //读取剪切板
     var textFu = await Clipboard.getData(Clipboard.kTextPlain);
-    if (text == textFu.text) {
-      res = textFu.text;
+    if (text == textFu?.text) {
+      res = textFu?.text;
       // 个人中心的复制会真好的黑色的邀请重合,这里让弹窗放到上面去
       $warn('复制成功', gravity: gravity);
     } else {
@@ -107,7 +107,7 @@ Future<String> copyToClipboard(
 
     $warn('复制失败', gravity: gravity);
   }
-  print('剪贴板: ' + res);
+  print('剪贴板: ' + res!);
 
   return res;
 }
