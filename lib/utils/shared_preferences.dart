@@ -4,13 +4,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// 用来做shared_preferences的存储,数据存储是异步的,读取是同步的
 class SpUtil {
-  static SpUtil _instance;
+  static late SpUtil _instance;
 
   static Future<SpUtil> get instance async {
     return await getInstance();
   }
 
-  static SharedPreferences _spf;
+  static late SharedPreferences _spf;
 
   SpUtil._();
 
@@ -35,7 +35,7 @@ class SpUtil {
 
   // 判断是否存在数据
   bool? hasKey(String key) {
-    Set<dynamic>? keys = getKeys()?.cast<>();
+    Set<dynamic>? keys = getKeys()?.cast();
     return keys?.contains(key);
   }
 

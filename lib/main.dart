@@ -45,13 +45,13 @@ class MyApp extends StatelessWidget {
 }
 
 initSoundType() {
-  int soundType = GlobalData.sp.getInt('soundType');
+  int? soundType = GlobalData.sp.getInt('soundType');
   print('get sound type $soundType');
   appStore.setSoundType(soundType);
 }
 
 initBpm() {
-  int spRes = GlobalData.sp.getInt('bpm');
+  int? spRes = GlobalData.sp.getInt('bpm');
   print('get bpm $spRes');
-  appStore.setBpm(spRes);
+  appStore.setBpm(spRes!);
 }

@@ -60,7 +60,7 @@ class SliderRow extends StatelessWidget {
                   handleSetBPMConfirm(text);
                 },
               ),
-              btnOkOnPress: () => handleSetBPMConfirm(textController.text),
+              btnOkOnPress: () => handleSetBPMConfirm(textController.text), btnCancelOnPress: (){},
             );
           },
           child: SleekCircularSlider(

@@ -8,7 +8,7 @@ class IndactorRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List steps = List(stepLength);
+    final List<int> steps = [stepLength];
     // 不满 4 个改用 Row 渲染
     if (stepLength < 4) {
       return Container(
@@ -25,7 +25,7 @@ class IndactorRow extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
                           color: this.nowStep > -1 && (this.nowStep % steps.length) == entry.key
-                              ? Theme.of(context).accentColor
+                              ? Theme.of(context).colorScheme.secondary
                               : Colors.grey[300]),
                     ))
                 .toList()),
@@ -54,7 +54,7 @@ class IndactorRow extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: this.nowStep > -1 && (this.nowStep % steps.length) == index
-                      ? Theme.of(context).accentColor
+                      ? Theme.of(context).colorScheme.secondary
                       : Colors.grey[300]),
             ),
           );

@@ -44,7 +44,7 @@ class Setting extends StatelessWidget {
                 String buildNumber = packageInfo.buildNumber;
                 print('正在检查版本: ---$appName---$packageName---$version---$buildNumber---');
 
-                showDialog(context: context, builder: (ctx) => AboutMe(version: 'v$version+$buildNumber', key: null,));
+                showDialog(context: context, builder: (ctx) => AboutMe(version: 'v$version+$buildNumber', key: ObjectKey('home14'),));
 
                 // $confirm(
                 //   '基于 flutter 技术打造的极简全平台节拍器', context,
@@ -72,7 +72,9 @@ class Setting extends StatelessWidget {
           style: Theme.of(context).textTheme.button,
         ),
       ),
-      onTap: onTap,
+      onTap: (){
+        onTap();
+      },
     );
   }
 }

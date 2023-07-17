@@ -113,7 +113,7 @@ Future<String> copyToClipboard(
 }
 
 // 自动超时关闭
-Timer _loadingClosedTimer;
+late Timer _loadingClosedTimer;
 
 $loading(context,
     {title = '加载中',
